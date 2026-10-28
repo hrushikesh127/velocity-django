@@ -1,0 +1,12 @@
+/* Global App Styles & Overrides */
+.Toastify__toast-theme--dark {
+  background: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  font-family: var(--font-sans) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+.Toastify__progress-bar-theme--dark {
+  background: var(--gradient-brand) !important;
+}

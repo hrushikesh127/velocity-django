@@ -1,0 +1,310 @@
+.comparecars-page {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  background-image:
+    radial-gradient(ellipse at 50% -10%, rgba(99, 102, 241, 0.14), transparent 55%),
+    radial-gradient(ellipse at 90% 70%, rgba(59, 130, 246, 0.08), transparent 50%);
+  padding: 40px 20px 80px;
+}
+
+.comparecars-container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Header */
+.comparecars-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.comparecars-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--accent-cyan);
+  margin-bottom: 8px;
+}
+
+.comparecars-header h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 850;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin-bottom: 10px;
+}
+
+.comparecars-header p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* Selectors Grid */
+.compare-selector-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+@media (min-width: 720px) {
+  .compare-selector-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.selector-vehicle-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-md);
+}
+
+.selector-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 750;
+  color: var(--accent-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.compare-select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.compare-select:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.compare-select option {
+  background: #0f172a;
+  color: #fff;
+}
+
+/* Selected Preview */
+.selected-preview-card {
+  display: flex;
+  gap: 16px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 4px;
+}
+
+.preview-image-wrap {
+  position: relative;
+  width: 120px;
+  height: 80px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.preview-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preview-status {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.preview-status.available {
+  background: rgba(16, 185, 129, 0.85);
+  color: #fff;
+}
+
+.preview-status.sold {
+  background: rgba(244, 63, 94, 0.85);
+  color: #fff;
+}
+
+.preview-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.preview-info h4 {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.preview-price {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin-bottom: 6px;
+}
+
+.preview-view-btn {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  text-align: left;
+  padding: 0;
+  transition: color var(--transition-fast);
+}
+
+.preview-view-btn:hover {
+  color: #fff;
+}
+
+.preview-empty-slot {
+  display: grid;
+  place-items: center;
+  height: 90px;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   Table Matrix Card
+   ========================================================================== */
+.comparecars-table-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(16px);
+}
+
+.table-responsive-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.comparecars-matrix {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.comparecars-matrix thead th {
+  padding: 18px 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 750;
+  color: #fff;
+}
+
+.comparecars-matrix thead th.col-spec {
+  width: 28%;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.comparecars-matrix thead th.col-car {
+  width: 36%;
+  color: var(--accent-cyan);
+}
+
+.comparecars-matrix tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background-color var(--transition-fast);
+}
+
+.comparecars-matrix tbody tr:last-child {
+  border-bottom: none;
+}
+
+.comparecars-matrix tbody tr:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.row-spec-label {
+  padding: 16px 24px;
+  font-size: 0.88rem;
+  font-weight: 650;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.spec-row-icon {
+  font-size: 1rem;
+}
+
+.val-cell {
+  padding: 16px 24px;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.val-cell.has-data {
+  color: #fff;
+  font-weight: 650;
+}
+
+/* Loading & Empty States */
+.compare-loading-state,
+.compare-error-state,
+.compare-empty-state {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+@media (max-width: 600px) {
+  .comparecars-page {
+    padding: 24px 14px 60px;
+  }
+
+  .comparecars-matrix thead th,
+  .row-spec-label,
+  .val-cell {
+    padding: 14px 16px;
+  }
+}

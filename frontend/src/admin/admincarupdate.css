@@ -1,0 +1,130 @@
+.carupdate-page {
+  min-height: 100vh;
+  padding: 30px 20px 80px;
+  background-color: var(--bg-primary);
+  background-image:
+    radial-gradient(ellipse at 50% -10%, rgba(99, 102, 241, 0.14), transparent 50%),
+    radial-gradient(ellipse at 90% 90%, rgba(6, 182, 212, 0.08), transparent 45%);
+}
+
+.carupdate {
+  width: min(100%, 860px);
+  margin: 0 auto;
+}
+
+.carupdate-header {
+  margin-bottom: 32px;
+}
+
+.carupdate-eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--accent-cyan);
+  margin-bottom: 6px;
+}
+
+.carupdate-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 850;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin: 0 0 8px;
+}
+
+.carupdate-header p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Form Sections */
+.carupdate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Preview items */
+.carupdate-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.carupdate-preview-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0f172a;
+}
+
+.carupdate-preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.deletepreview {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(244, 63, 94, 0.85);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  line-height: 1;
+  transition: transform var(--transition-fast);
+}
+
+.deletepreview:hover {
+  transform: scale(1.15);
+  background: #f43f5e;
+}
+
+/* Dropzone */
+.carupdate-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px;
+  border: 2px dashed rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.carupdate-dropzone:hover,
+.carupdate-dropzone.is-active {
+  border-color: var(--accent-primary);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+/* States */
+.carupdate-state-loading,
+.carupdate-state-error {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+@media (max-width: 600px) {
+  .carupdate-page {
+    padding: 20px 14px 60px;
+  }
+}
