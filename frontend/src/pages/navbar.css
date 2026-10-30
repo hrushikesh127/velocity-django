@@ -170,6 +170,26 @@
   border-radius: var(--radius-full);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.user-profile-badge:hover,
+.user-profile-badge.active {
+  background: rgba(59, 130, 246, 0.14);
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.2);
+}
+
+.user-profile-badge:hover .user-edit-icon {
+  color: var(--accent-cyan);
+  transform: rotate(15deg);
+}
+
+.user-edit-icon {
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
 }
 
 @media (min-width: 640px) {

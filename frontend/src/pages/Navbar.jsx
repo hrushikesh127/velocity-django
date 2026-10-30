@@ -5,18 +5,21 @@ import { settoken } from '../utils/apiclient';
 import Usedata from '../hooks/usedata';
 import './navbar.css';
 import Notificationbox from './notificationbox';
+import Chatbox from './chatbox';
 
 function Navbar() {
   const user = getuser();
   const location = useLocation();
   const navigate = useNavigate();
   const [showNotify, setShowNotify] = useState(false);
+  const [showChat, setShowChat] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Close mobile menu when route changes
   useEffect(() => {
     setMobileMenuOpen(false);
     setShowNotify(false);
+    setShowChat(false);
   }, [location.pathname]);
 
   // Fetch notifications to get unread count badge
@@ -67,7 +70,10 @@ function Navbar() {
                 <button
                   type="button"
                   className={`icon-button ${showNotify ? 'active' : ''}`}
-                  onClick={() => setShowNotify(!showNotify)}
+                  onClick={() => {
+                    setShowNotify(!showNotify);
+                    setShowChat(false);
+                  }}
                   aria-label="View notifications"
                   title="Notifications"
                 >
@@ -82,13 +88,21 @@ function Navbar() {
                   )}
                 </button>
 
-                {/* User Pill */}
-                <div className="user-profile-badge" title={`Signed in as ${user.username || user.email || 'User'}`}>
+                {/* User Pill - Navigates to Edit Profile */}
+                <NavLink
+                  to="/profile"
+                  className={({ isActive }) => `user-profile-badge ${isActive ? 'active' : ''}`}
+                  title="Click to view and edit profile credentials"
+                >
                   <span className="user-avatar">
                     {(user.username || user.email || 'U').charAt(0).toUpperCase()}
                   </span>
                   <span className="user-name-label">{user.username || 'Account'}</span>
-                </div>
+                  <svg className="user-edit-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                  </svg>
+                </NavLink>
 
                 {/* Logout Button */}
                 <button
@@ -112,6 +126,25 @@ function Navbar() {
               </div>
             )}
 
+            <button
+              type="button"
+              className={`icon-button chatbot-trigger ${showChat ? 'active' : ''}`}
+              onClick={() => {
+                setShowChat(!showChat);
+                setShowNotify(false);
+                setMobileMenuOpen(false);
+              }}
+              aria-label={showChat ? 'Close car assistant' : 'Open car assistant'}
+              aria-expanded={showChat}
+              title="Car assistant"
+            >
+              <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="4" y="7" width="16" height="13" rx="4" />
+                <path d="M12 3v4M9 13h.01M15 13h.01M9 17h6" />
+                <path d="M2 12v3M22 12v3" />
+              </svg>
+            </button>
+
             {/* Mobile Menu Toggle Button */}
             <button
               type="button"
@@ -131,16 +164,16 @@ function Navbar() {
         <div className={`mobile-drawer ${mobileMenuOpen ? 'open' : ''}`}>
           <div className="mobile-drawer-content">
             {user && (
-              <div className="mobile-user-card">
+              <NavLink to="/profile" className="mobile-user-card" title="Click to edit profile">
                 <div className="user-avatar large">
                   {(user.username || user.email || 'U').charAt(0).toUpperCase()}
                 </div>
                 <div className="mobile-user-info">
                   <p className="mobile-username">{user.username || 'User'}</p>
-                  <p className="mobile-email">{user.email || 'Verified Account'}</p>
+                  <p className="mobile-email">Edit profile credentials →</p>
                 </div>
                 {user.isadmin && <span className="mobile-admin-tag">Admin</span>}
-              </div>
+              </NavLink>
             )}
 
             <nav className="mobile-links" aria-label="Mobile navigation">
@@ -197,6 +230,7 @@ function Navbar() {
 
       {/* Slide-in Notifications Modal / Box */}
       {showNotify && <Notificationbox setshownotify={setShowNotify} />}
+      {showChat && <Chatbox onClose={() => setShowChat(false)} />}
     </>
   );
 }

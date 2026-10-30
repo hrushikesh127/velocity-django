@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import './App.css'
 import Register from './authentication/Register'
@@ -17,6 +18,9 @@ import Cardetailspage from './pages/cardetailspage'
 import Adminrequests from './admin/adminrequests'
 import Adminnavbar from './admin/adminnavbar'
 import Comparecars from './pages/comparecars'
+import VelocityLoader from './pages/VelocityLoader'
+import Profile from './pages/profile'
+import Resetpassword from './pages/resetpasswrd'
 const token = localStorage.getItem('velocitytoken')
 settoken(token);
 
@@ -34,10 +38,11 @@ export function getuser() {
 }
 
 function App() {
-  
+  const [showLoader, setShowLoader] = useState(true);
 
   return (
     <>
+    {showLoader && <VelocityLoader onComplete={() => setShowLoader(false)} />}
     <BrowserRouter>
     <ToastContainer theme="dark" position="bottom-right" autoClose={3000} />
     <Navbar/>
@@ -47,8 +52,10 @@ function App() {
       <Route path='/login' element={<Login/>}/>
       <Route element={<Protectedroutes/>}>
       <Route path='/' element={<Home/>}/>
+      <Route path='/profile' element={<Profile/>}/>
       <Route path='/:id' element={<Cardetailspage/>}/>
       <Route path='/compare' element={<Comparecars/>}/>
+      <Route path='/reset-password' element={<Resetpassword/>}/>
       <Route element={<Adminroutes/>}>
       
       <Route path='/createcar' element={<Admincreatecar/>} />

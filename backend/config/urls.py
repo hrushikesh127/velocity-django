@@ -24,6 +24,7 @@ urlpatterns = [
     path('api/',include('accounts.urls')),
     path('api/car/',include('cars.urls')),
     path('api/bookings/',include('bookings.urls')),
+    path('api/ask/',include('chatbot.urls')),
 ]
 
 if settings.DEBUG:

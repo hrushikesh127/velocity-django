@@ -9,4 +9,4 @@ class Carviewset(ModelViewSet):
     queryset=Car.objects.all()
     serializer_class = Carserializer
     parser_classes=[FormParser,MultiPartParser]
-    permission_classes=[IsAuthenticated,IsAdminUser]
+    permission_classes=[IsAuthenticated]

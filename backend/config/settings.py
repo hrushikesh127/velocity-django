@@ -55,7 +55,9 @@ INSTALLED_APPS = [
     'accounts',
     'corsheaders',
     'cars',
-    'bookings'
+    'bookings',
+    'chatbot'
+
 ]
 AUTH_USER_MODEL = "accounts.Users"
 import os

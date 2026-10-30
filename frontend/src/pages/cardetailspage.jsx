@@ -11,6 +11,7 @@ function Cardetailspage() {
   const navigate = useNavigate();
   const { data: car, isLoading, isError } = Usedata(`/car/Cars/${id}/`);
   const { data: users } = Usedata('myuser/');
+  console.log(users);
 
   const user = getuser();
   const [actions, setActions] = useState('Booking');
@@ -22,9 +23,9 @@ function Cardetailspage() {
 
     const data = {
       carid: car.id,
-      customername: car.owner_name || user?.username || 'Customer',
-      customeremail: user?.email || '',
-      contactno: car.owner_contact || '',
+      customername: `${users?.first_name} ${users?.last_name}` || 'Customer',
+      customeremail: users?.email || '',
+      contactno: users?.phone || '',
       location: users?.location || 'Not Specified',
       Actions: actions,
       price_at_request: car.price,

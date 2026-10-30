@@ -1,0 +1,89 @@
+.resetpassword {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 12%, rgba(59, 130, 246, 0.18), transparent 50%),
+    radial-gradient(ellipse at 85% 85%, rgba(6, 182, 212, 0.1), transparent 45%),
+    var(--bg-primary);
+}
+
+.resetpassword form {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: min(100%, 460px);
+  padding: clamp(32px, 6vw, 48px);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--radius-xl);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.resetpassword input {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius-md);
+  outline: none;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+  font-size: 0.92rem;
+  transition: border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.resetpassword input::placeholder {
+  color: var(--text-muted);
+}
+
+.resetpassword input:focus {
+  border-color: var(--accent-primary);
+  background: rgba(59, 130, 246, 0.08);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.resetpassword em {
+  margin-top: -12px;
+  color: var(--color-danger);
+  font-size: 0.82rem;
+  font-style: normal;
+}
+
+.resetpassword button {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 4px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-brand);
+  box-shadow: 0 8px 22px rgba(59, 130, 246, 0.35);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.resetpassword button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(59, 130, 246, 0.5);
+}
+
+.resetpassword button:focus-visible {
+  outline: 3px solid rgba(6, 182, 212, 0.65);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .resetpassword form {
+    padding: 28px 20px;
+    border-radius: var(--radius-lg);
+  }
+}

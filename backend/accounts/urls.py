@@ -8,5 +8,7 @@ urlpatterns = [
     path('users/' , Userlistview.as_view()),
     path('users/<int:pk>/', UserDeatailview.as_view()),
     path('myuser/', Myuser.as_view()),
+    path('reset-link/', views.forgot_password),
+    path('reset-password/', views.reset_passwrord),
     
 ]
